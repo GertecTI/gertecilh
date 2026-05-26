@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+        img {
+            width: 100vw;
+            height: auto;
+            display: block;
+            margin: 0;
+        }
+        #fullscreen-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <button id="fullscreen-button" onclick="toggleFullscreen()">Entrar em Tela Cheia</button>
+    <img src="https://raw.githubusercontent.com/GertecTI/bemvindo/main/FLUXOPQ.png" alt="Slide 1">
+    <!-- Adicione mais imagens conforme necessário -->
+    <script>
+        function toggleFullscreen() {
+            const body = document.documentElement;
+            if (body.requestFullscreen) {
+                body.requestFullscreen().then(() => {
+                    // Esconde o botão após entrar em tela cheia
+                    document.getElementById('fullscreen-button').style.display = 'none';
+                }).catch(err => {
+                    console.log(`Erro ao tentar entrar em tela cheia: ${err.message}`);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

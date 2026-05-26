@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeo do YouTube</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+        iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+        }
+        #fullscreen-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1000;
+            background: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button id="fullscreen-button" onclick="toggleFullscreen()">Entrar em Tela Cheia</button>
+    <iframe width="1412" height="794" src="https://www.youtube.com/embed/PnmuehYHBF4" title="Institucional Atualizado Dez2024 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <script>
+        function toggleFullscreen() {
+            const iframe = document.querySelector('iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen().then(() => {
+                    document.getElementById('fullscreen-button').style.display = 'none';
+                }).catch(err => {
+                    console.log(`Erro ao tentar entrar em tela cheia: ${err.message}`);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
